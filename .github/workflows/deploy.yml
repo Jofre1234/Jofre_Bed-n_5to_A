@@ -16,10 +16,10 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
-    
+
     env:
       REGISTRY: ghcr.io
-      IMAGE_NAME: ${{ github.repository }} # Usará Jofre1234/Jofre_Bed-n_5to_A
+      IMAGE_NAME: ${{ lower(github.repository) }} # <<<< ¡ESTO SOLUCIONA EL ERROR DE MINÚSCULAS!
       IMAGE_TAG: 1.0.0 # Mantiene la etiqueta original
 
     steps:
@@ -85,20 +85,20 @@ jobs:
 
           # Paso 1 descagar la imagen 
           #echo "==> descargando la imagen del GHCR"
-          # 🎯 CORRECCIÓN 3: Login con tu usuario (Jofre1234)
+
           echo "${{ secrets.GHCR_PAT }}" | docker login ghcr.io -u Jofre1234 --password-stdin
-          # 🎯 CORRECCIÓN 4: Pull de la imagen de tu repositorio
+          
           docker pull ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}
 
           #Paso 2 borrar el stack
-          # 🎯 CORRECCIÓN 5: Usar un nombre de stack consistente (ej. 'jofre')
+          # ✅ CORRECCIÓN 4: Usar un nombre de stack consistente (ej. 'jofre')
           docker stack rm jofre || true 
 
           sleep 30
 
           #Paso 3 de
           echo "==> Desplegando stack..."
-          # 🎯 CORRECCIÓN 6: Despliega el stack con el mismo nombre
+          
           docker stack deploy -c stack.yml --with-registry-auth jofre
 
           docker ps
