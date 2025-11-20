@@ -1,8 +1,8 @@
 version: '3.9'
 
 services:
-  moreno:
-    image: ghcr.io/byronmoreno/finalquintoa:1.0.0
+  jofre-app: # PEQUEÑO CAMBIO 1: Nombre de servicio consistente
+    image: ghcr.io/Jofre1234/Jofre_Bed-n_5to_A:latest 
     deploy:
       replicas: 1
       resources:
@@ -11,16 +11,16 @@ services:
           memory: 512M
       labels:
         - "traefik.enable=true"
-        - "traefik.http.routers.moreno.entrypoints=http"
-        - "traefik.http.routers.moreno.rule=Host(`moreno.byronrm.com`)"
-        - "traefik.http.middlewares.moreno-https-redirect.redirectscheme.scheme=https"
-        - "traefik.http.routers.moreno.middlewares=moreno-https-redirect"
-        - "traefik.http.routers.moreno-secure.entrypoints=https"
-        - "traefik.http.routers.moreno-secure.rule=Host(`moreno.byronrm.com`)"
-        - "traefik.http.routers.moreno-secure.tls=true"
-        - "traefik.http.routers.moreno-secure.tls.certresolver=http"
-        - "traefik.http.routers.moreno-secure.service=moreno"
-        - "traefik.http.services.moreno.loadbalancer.server.port=5000"
+        - "traefik.http.routers.jofre-app.entrypoints=http"
+        - "traefik.http.routers.jofre-app.rule=Host(`moreno.byronrm.com`)" # DOMINIO CONFIRMADO
+        - "traefik.http.middlewares.jofre-app-https-redirect.redirectscheme.scheme=https"
+        - "traefik.http.routers.jofre-app.middlewares=jofre-app-https-redirect"
+        - "traefik.http.routers.jofre-app-secure.entrypoints=https"
+        - "traefik.http.routers.jofre-app-secure.rule=Host(`moreno.byronrm.com`)"
+        - "traefik.http.routers.jofre-app-secure.tls=true"
+        - "traefik.http.routers.jofre-app-secure.tls.certresolver=http"
+        - "traefik.http.routers.jofre-app-secure.service=jofre-app"
+        - "traefik.http.services.jofre-app.loadbalancer.server.port=5000"
         - "traefik.docker.network=traefik-public"
     networks:
       - traefik-public
