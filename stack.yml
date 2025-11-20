@@ -2,7 +2,7 @@ version: '3.9'
 
 services:
   jofre-app: # PEQUEÑO CAMBIO 1: Nombre de servicio consistente
-    image: ghcr.io/Jofre1234/Jofre_Bed-n_5to_A:latest 
+    image: ghcr.io/jofre1234/jofre_bed-n_5to_a:1.0.0 
     deploy:
       replicas: 1
       resources:
