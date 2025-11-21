@@ -14,3 +14,4 @@ def hello_world():
 if __name__ == '__main__':
     # Ejecuta la aplicación en el puerto 5000
     app.run(debug=True, host='0.0.0.0', port=5000)
+# Este archivo define una aplicación web simple usando Flask.

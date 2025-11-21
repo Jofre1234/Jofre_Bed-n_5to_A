@@ -111,3 +111,4 @@ jobs:
           docker stack deploy -c stack.yml --with-registry-auth jofre
 
           docker ps
+          
