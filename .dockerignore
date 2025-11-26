@@ -1,3 +1,4 @@
+# .DOCKERIGNORE
 .venv
 /venv
 venv
