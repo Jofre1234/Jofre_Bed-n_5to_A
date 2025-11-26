@@ -1,7 +1,7 @@
 version: '3.9'
 
 services:
-  jofre-app: # PEQUEÑO CAMBIO 1: Nombre de servicio consistente
+  jofre-app:
     image: ghcr.io/jofre1234/jofre_bed-n_5to_a:1.0.0 
     deploy:
       replicas: 1
@@ -12,7 +12,7 @@ services:
       labels:
         - "traefik.enable=true"
         - "traefik.http.routers.jofre-app.entrypoints=http"
-        - "traefik.http.routers.jofre-app.rule=Host(`moreno.byronrm.com`)" # DOMINIO CONFIRMADO
+        - "traefik.http.routers.jofre-app.rule=Host(`moreno.byronrm.com`)"
         - "traefik.http.middlewares.jofre-app-https-redirect.redirectscheme.scheme=https"
         - "traefik.http.routers.jofre-app.middlewares=jofre-app-https-redirect"
         - "traefik.http.routers.jofre-app-secure.entrypoints=https"

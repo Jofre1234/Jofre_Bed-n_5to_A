@@ -1,4 +1,4 @@
-# Imagen base oficial de Python
+# Imagen de Python
 FROM python:3.11-slim
 
 # Establecer directorio de trabajo
